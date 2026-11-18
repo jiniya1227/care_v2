@@ -1,0 +1,71 @@
+/* =========================================================
+   움직임 모음 (style.css 다음에 불러와요)
+   - 푸들 보리: 둥실둥실, 가끔 콩! 뛰기, 눈 깜빡, 귀 팔랑, 혀 날름
+   - 이번 달 내실 금액: 바뀔 때 커졌다 돌아오며 반짝
+   - 처음 열 때 카드가 차례로 올라옴, 탭을 바꾸면 부드럽게 나타남
+   - 맨 아래 마케팅지니 로고: 둥실 + 금빛 빛 + 반짝 지나가기
+   - '움직임 줄이기'를 켠 기기에서는 맨 아래 규칙이 모두 멈춰 줘요.
+   ========================================================= */
+
+/* ---------- 푸들 보리 ---------- */
+.poodle { transform-origin: 50% 92%; filter: drop-shadow(0 5px 6px rgba(0, 0, 0, .18)); animation: dog-bob 5.2s ease-in-out infinite; }
+.poodle.tilt { animation: dog-tilt .7s ease; }
+@keyframes dog-bob {
+  0%, 100% { transform: translateY(0) rotate(0) scale(1, 1); }
+  30%  { transform: translateY(-4px) rotate(-2.5deg) scale(1, 1); }
+  60%  { transform: translateY(0) rotate(1.5deg) scale(1, 1); }
+  76%  { transform: translateY(0) rotate(0) scale(1.07, .9); }
+  84%  { transform: translateY(-14px) rotate(-4deg) scale(.95, 1.06); }
+  92%  { transform: translateY(0) rotate(0) scale(1.06, .92); }
+  96%  { transform: translateY(-3px) rotate(0) scale(1, 1); }
+}
+@keyframes dog-tilt { 0% { transform: rotate(0); } 30% { transform: rotate(-10deg) translateY(-3px); } 62% { transform: rotate(8deg); } 100% { transform: rotate(0); } }
+.eye { transform-box: fill-box; transform-origin: 50% 50%; animation: dog-blink 4.2s infinite; }
+@keyframes dog-blink { 0%, 90%, 100% { transform: scaleY(1); } 94% { transform: scaleY(.08); } }
+.ear-l { transform-origin: 24px 50px; animation: ear-l 2.6s ease-in-out infinite; }
+.ear-r { transform-origin: 96px 50px; animation: ear-r 2.6s ease-in-out .35s infinite; }
+@keyframes ear-l { 0%, 100% { transform: rotate(0); } 45% { transform: rotate(9deg); } 70% { transform: rotate(-6deg); } }
+@keyframes ear-r { 0%, 100% { transform: rotate(0); } 45% { transform: rotate(-9deg); } 70% { transform: rotate(6deg); } }
+.tongue { transform-box: fill-box; transform-origin: 50% 0; animation: tongue 2.2s ease-in-out infinite; }
+@keyframes tongue { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.45); } }
+
+/* ---------- 이번 달 내실 금액 ---------- */
+.hero-amount.bump { animation: amount-bump .55s var(--ease), amount-glow 1.4s ease-out; }
+@keyframes amount-bump { 0% { transform: scale(.94); } 35% { transform: scale(1.08); } 70% { transform: scale(.99); } 100% { transform: scale(1); } }
+@keyframes amount-glow {
+  0%   { text-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+  35%  { text-shadow: 0 0 22px rgba(255, 255, 255, .95); }
+  100% { text-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+/* ---------- 처음 열 때, 탭을 바꿀 때 ---------- */
+.rise { animation: rise .6s var(--ease) both; animation-delay: calc(var(--i, 0) * 80ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.i0 { --i: 0; } .i1 { --i: 1; } .i2 { --i: 2; } .i3 { --i: 3; } .i4 { --i: 4; }
+.panel.show { animation: panel-in .35s var(--ease); }
+@keyframes panel-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.row.flash .r { animation: row-flash .8s ease-out; }
+@keyframes row-flash { 0% { background: var(--sun); border-radius: 6px; } 100% { background: transparent; } }
+
+/* ---------- 맨 아래 마케팅지니 로고 ---------- */
+.foot { position: relative; }
+.foot .logo { animation: logo-float 3.6s ease-in-out infinite, logo-glow 3.6s ease-in-out infinite; }
+@keyframes logo-float { 0%, 100% { transform: translateY(0) rotate(0); } 25% { transform: translateY(-7px) rotate(-4deg); } 50% { transform: translateY(-11px) rotate(0); } 75% { transform: translateY(-5px) rotate(4deg); } }
+@keyframes logo-glow {
+  0%, 100% { box-shadow: 0 0 0 3px var(--surface), 0 0 0 0 rgba(255, 194, 26, 0); }
+  50%      { box-shadow: 0 0 0 3px var(--surface), 0 0 26px 8px rgba(255, 194, 26, .65); }
+}
+.foot::before {
+  content: ""; position: absolute; top: var(--space-6); left: calc(50% - 36px); width: 72px; height: 72px; border-radius: 50%; pointer-events: none;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .9) 50%, transparent 65%) -90px 0 / 200% 100% no-repeat;
+  animation: logo-shine 4.8s ease-in-out infinite;
+}
+@keyframes logo-shine { 0%, 55% { background-position: 160% 0; opacity: 0; } 60% { opacity: 1; } 85%, 100% { background-position: -60% 0; opacity: 0; } }
+.foot .logo:hover { animation-duration: 1.4s, 1.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important; animation-delay: 0ms !important;
+    transition-duration: .001ms !important; transition-delay: 0ms !important; scroll-behavior: auto !important;
+  }
+}
