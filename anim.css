@@ -49,19 +49,19 @@
 
 /* ---------- 맨 아래 마케팅지니 로고 ---------- */
 .foot { position: relative; }
-.foot .logo { animation: logo-float 3.6s ease-in-out infinite, logo-glow 3.6s ease-in-out infinite; }
+.foot-art { animation: logo-float 3.6s ease-in-out infinite, logo-glow 3.6s ease-in-out infinite; }
 @keyframes logo-float { 0%, 100% { transform: translateY(0) rotate(0); } 25% { transform: translateY(-7px) rotate(-4deg); } 50% { transform: translateY(-11px) rotate(0); } 75% { transform: translateY(-5px) rotate(4deg); } }
 @keyframes logo-glow {
   0%, 100% { box-shadow: 0 0 0 3px var(--surface), 0 0 0 0 rgba(255, 194, 26, 0); }
   50%      { box-shadow: 0 0 0 3px var(--surface), 0 0 26px 8px rgba(255, 194, 26, .65); }
 }
 .foot::before {
-  content: ""; position: absolute; top: var(--space-6); left: calc(50% - 36px); width: 72px; height: 72px; border-radius: 50%; pointer-events: none;
+  content: ""; position: absolute; top: var(--space-6); left: calc(50% - 52px); width: 104px; height: 104px; border-radius: 50%; pointer-events: none;
   background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .9) 50%, transparent 65%) -90px 0 / 200% 100% no-repeat;
   animation: logo-shine 4.8s ease-in-out infinite;
 }
 @keyframes logo-shine { 0%, 55% { background-position: 160% 0; opacity: 0; } 60% { opacity: 1; } 85%, 100% { background-position: -60% 0; opacity: 0; } }
-.foot .logo:hover { animation-duration: 1.4s, 1.4s; }
+.foot-art:hover { animation-duration: 1.4s, 1.4s; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

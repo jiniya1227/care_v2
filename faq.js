@@ -4,7 +4,7 @@
 'use strict';
 var L = root.LTC, DATA = L.DATA, won = L.won, gradeOf = L.gradeOf;
 var QA_TAG = { start: '신청·등급', cost: '비용·감경', use: '이용 방법' };
-var QA_WORDS = ['신청', '등급', '한도', '식비', '감경', '공휴일', '요양원'];
+var QA_WORDS = ['신청', '등급', '한도', '식비', '감경', '공휴일'];
 var QA_CATS = [{ k: 'all', t: '전체' }, { k: 'start', t: '신청·등급' }, { k: 'cost', t: '비용·감경' }, { k: 'use', t: '이용 방법' }];
 function qaData() {
   var R = DATA.rates, S = DATA.surcharge;

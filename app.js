@@ -100,8 +100,6 @@ function syncInputs() {
 
 /* 이용일수를 한 번에 넣는 버튼 */
 var QUICK = {
-  'q-day': { path: 'day.wk', items: L.QUICK_DAYS.map(function (q) { return { text: q.label + ' ' + q.n + '일', n: q.n }; }) },
-  'q-visit': { path: 'visit.wk', items: L.QUICK_DAYS.map(function (q) { return { text: q.label + ' ' + q.n + '일', n: q.n }; }) },
   'q-fac': { path: 'fac.days', items: [{ text: '30일', n: 30 }, { text: '31일', n: 31 }, { text: '28일', n: 28 }] }
 };
 function initQuick() {

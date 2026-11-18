@@ -46,8 +46,6 @@ var DATA = {
 var MODE_NAMES = ['주야간보호', '방문요양', '요양원'];
 var ROOM_NAMES = { multi: '다인실', double: '2인실', single: '1인실' };
 var FTYPE_NAMES = { home: '요양원', group: '노인요양공동생활가정' };
-// 이용일수를 한 번에 넣는 버튼 (월~금은 22일, 월~토는 25일로 고정, 나머지는 주 횟수 × 4.35 반올림)
-var QUICK_DAYS = [{ label: '월~금', n: 22 }, { label: '월~토', n: 25 }, { label: '주 3회', n: 13 }, { label: '주 2회', n: 9 }, { label: '주 1회', n: 4 }];
 
 function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 function won(n) { return fmt(n) + '원'; }
@@ -229,7 +227,7 @@ function calc2027(S, mode) {
 }
 
 return {
-  DATA: DATA, D2027: D2027, MODE_NAMES: MODE_NAMES, ROOM_NAMES: ROOM_NAMES, FTYPE_NAMES: FTYPE_NAMES, QUICK_DAYS: QUICK_DAYS,
+  DATA: DATA, D2027: D2027, MODE_NAMES: MODE_NAMES, ROOM_NAMES: ROOM_NAMES, FTYPE_NAMES: FTYPE_NAMES,
   fmt: fmt, won: won, num: num, clamp: clamp, monthCount: monthCount, gradeOf: gradeOf, rateOf: rateOf, minLabel: minLabel,
   surUnit: surUnit, copy: copy, visitAllowed: visitAllowed, defaults: defaults,
   calc: calc, calcWith: calcWith, calcDay: calcDay, calcVisit: calcVisit, calcFac: calcFac, remain: remain, weekHint: weekHint,
